@@ -1,9 +1,7 @@
-// RxJS imports according to https://angular.io/docs/ts/latest/guide/server-communication.html#!#rxjs
-
-// See node_module/rxjs/Rxjs.js
-// Import just the rxjs statics and operators we need for THIS app.
+// RxJS imports according to https://v2.angular.io/docs/ts/latest/guide/server-communication.html#!#rxjs
 
 // Statics
+import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';

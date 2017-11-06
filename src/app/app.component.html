@@ -1,11 +1,22 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-</div>
-<h2>Here are some links to help you start: </h2>
-<input [value]="value" (keydown)="onKeyDown($event)" >
-<p>{{ message }}</p>
+<div id="main" [style.background-color]="backgroundColor">
 
-<router-outlet></router-outlet>
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{title}}!!
+    </h1>
+  </div>
+
+  <label>{{ label }}</label>
+  <input type="text" matInput
+    [(ngModel)]="inputValue"
+    [ngModelOptions]="{updateOn: 'blur'}"
+    (keydown)="onKeyDown($event)"
+  >
+  <p>{{ inputValue }}</p>
+
+  <button (click)="onClickStart()">フィーバースタート</button>
+  <button (click)="onClickStop()">フィーバー停止</button>
+
+  <router-outlet></router-outlet>
+
+</div>
