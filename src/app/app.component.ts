@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { PAGE_TITLE, STATUS, KEY_CODE } from './shared/constants';
+import { HttpService } from 'app/shared/http.service';
 
 const NO_COLOR = 'transparent';
 
@@ -22,6 +23,10 @@ export class AppComponent {
   private subscription: Subscription;
   get randomColor(): string { return this.genColorCode(); }
 
+  constructor(
+    private httpService: HttpService,
+  ) {}
+
   onKeyDown(event: KeyboardEvent) {
     this.label = event.keyCode === KEY_CODE.ENTER ? STATUS.OPEN : STATUS.CLOSE;
   }
@@ -37,6 +42,10 @@ export class AppComponent {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  onClickHttp() {
+    this.httpService.get();
   }
 
   @HostListener('window:resize')
