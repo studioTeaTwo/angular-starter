@@ -14,12 +14,15 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class HttpApiInterceptor implements HttpInterceptor {
+  readonly domain: string = environment.domain;
 
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const req = request.clone();
+    const req = request.clone({
+      url: this.domain + request.url,
+    });
     return next.handle(req)
             .map((event: HttpEvent<any>) => {
               console.log('event', event);

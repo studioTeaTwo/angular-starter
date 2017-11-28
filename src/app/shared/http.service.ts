@@ -9,7 +9,7 @@ export class HttpService {
   ) { }
 
   get() {
-    this.httpClient.get(`http://localhost:3000/api/test`, {
+    this.httpClient.get(`/api/test`, {
       observe: 'body',
       responseType: 'text',
     })
