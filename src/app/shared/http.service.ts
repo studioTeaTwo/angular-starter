@@ -8,14 +8,26 @@ export class HttpService {
     private httpClient: HttpClient,
   ) { }
 
-  get() {
+  test() {
     this.httpClient.get(`/api/test`, {
       observe: 'body',
       responseType: 'text',
     })
       .subscribe(
         response => {
-          console.log('レスポンスが返ってきた', response);
+          console.log('response', response);
+        }
+      );
+  }
+
+  exHeader() {
+    this.httpClient.head(`/api/example/header`, {
+      observe: 'response',
+      responseType: 'text',
+    })
+      .subscribe(
+        response => {
+          console.log('response', response, response.headers);
         }
       );
   }

@@ -32,6 +32,10 @@ export class HttpApiInterceptor implements HttpInterceptor {
               if (event.type === HttpEventType.Sent) {
                 console.log('sent');
               }
+              // マッチしない（普通にHttpResponseに変換されている）
+              if (event.type === HttpEventType.ResponseHeader) {
+                console.log('header');
+              }
               return event;
             })
             .catch((err: any, caught) => {

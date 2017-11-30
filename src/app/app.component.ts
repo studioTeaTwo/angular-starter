@@ -45,7 +45,7 @@ export class AppComponent {
   }
 
   onClickHttp() {
-    this.httpService.get();
+    this.httpService.exHeader();
   }
 
   @HostListener('window:resize')
