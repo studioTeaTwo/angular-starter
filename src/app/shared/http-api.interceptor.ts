@@ -6,7 +6,10 @@ import {
   HttpEvent,
   HttpResponse,
   HttpHeaderResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpSentEvent,
+  HttpEventType,
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -24,8 +27,11 @@ export class HttpApiInterceptor implements HttpInterceptor {
       url: this.domain + request.url,
     });
     return next.handle(req)
-            .map((event: HttpEvent<any>) => {
+            .do((event: HttpEvent<any>) => {
               console.log('event', event);
+              if (event.type === HttpEventType.Sent) {
+                console.log('sent');
+              }
               return event;
             })
             .catch((err: any, caught) => {

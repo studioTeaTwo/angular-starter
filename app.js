@@ -9,7 +9,7 @@ app.use((req, res, next) => {
   });
 
 app.get("/api/test", (req, res, next) => {
-    console.log('apiを受信したよ', req.params);
+    console.log('request received', req.params);
     res.sendStatus(200);
 });
 
