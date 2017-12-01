@@ -16,31 +16,24 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
 
 @Injectable()
-export class HttpApiInterceptor implements HttpInterceptor {
+export class HttpApi2Interceptor implements HttpInterceptor {
   readonly domain: string = environment.domain;
 
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('1');
-    const req = request.clone({
-      url: this.domain + request.url,
-    });
-    return next.handle(req)
+    console.log('2', next);
+    return next.handle(request)
             .do((event: HttpEvent<any>) => {
-              console.log('event', event);
+              console.log('event2', event);
               if (event.type === HttpEventType.Sent) {
-                console.log('sent');
-              }
-              // マッチしない（普通にHttpResponseに変換されている）
-              if (event.type === HttpEventType.ResponseHeader) {
-                console.log('header');
+                console.log('sent2');
               }
               return event;
             })
             .catch((err: any, caught) => {
-              console.log('cahtch', err);
+              console.log('cahtch2', err);
               return Observable.throw(err);
             });
   }
