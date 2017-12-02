@@ -20,14 +20,7 @@ import { HttpApiInterceptor } from 'app/shared/http-api.interceptor';
     SharedModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpApiInterceptor,
-      // 必須：HTTP_INTERCEPTORSが配列であることを示す
-      multi: true
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

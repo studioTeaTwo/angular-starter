@@ -4,12 +4,12 @@ const app = express();
 // CORSを許可する
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, test, test2, test3");
     next();
   });
 
 app.get("/api/test", (req, res, next) => {
-    console.log('request received', req.params);
+    console.log('request received', req.query);
     res.sendStatus(200);
 });
 

@@ -23,20 +23,22 @@ export class HttpApiInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('1');
     const req = request.clone({
       url: this.domain + request.url,
+      setHeaders: {
+        test: 'value',
+        test2: 'value2',
+        test3: 'value3'
+      },
+      setParams: {
+        param1: 'value',
+        param2: 'value2',
+        param3: 'value3',
+      }
     });
     return next.handle(req)
-            .do((event: HttpEvent<any>) => {
+            .map((event: HttpEvent<any>) => {
               console.log('event', event);
-              if (event.type === HttpEventType.Sent) {
-                console.log('sent');
-              }
-              // マッチしない（普通にHttpResponseに変換されている）
-              if (event.type === HttpEventType.ResponseHeader) {
-                console.log('header');
-              }
               return event;
             })
             .catch((err: any, caught) => {

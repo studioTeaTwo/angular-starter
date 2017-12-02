@@ -22,6 +22,12 @@ import { HttpApi3Interceptor } from 'app/shared/http-api3.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: HttpApiInterceptor,
+      // 必須：HTTP_INTERCEPTORSが配列であることを示す
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: HttpApi2Interceptor,
       // 必須：HTTP_INTERCEPTORSが配列であることを示す
       multi: true
