@@ -128,6 +128,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/elements@angular/elements-builds#labs/elements":
+  version "5.1.0-beta.0-21bfaf2"
+  resolved "https://codeload.github.com/angular/elements-builds/tar.gz/cbe842d027ecd4edbb8bebf7e377ee499e7ee832"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/forms@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.0.0.tgz#c7fddfa35396759ae9852920a30cdda8c41ed1de"
