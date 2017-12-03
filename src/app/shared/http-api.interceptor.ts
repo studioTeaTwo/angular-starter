@@ -10,6 +10,7 @@ import {
   HttpHeaders,
   HttpSentEvent,
   HttpEventType,
+  HttpParams,
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -26,24 +27,35 @@ export class HttpApiInterceptor implements HttpInterceptor {
     const req = request.clone({
       url: this.domain + request.url,
       setHeaders: {
-        test: 'value',
+        test1: 'value1',
         test2: 'value2',
-        test3: 'value3'
+        // test3: 'value3'
       },
       setParams: {
-        param1: 'value',
+        param1: 'value1',
         param2: 'value2',
-        param3: 'value3',
+        // param3: 'value3',
       }
     });
+    console.log(req);
     return next.handle(req)
-            .map((event: HttpEvent<any>) => {
+            .do((event: HttpEvent<any>) => {
               console.log('event', event);
               return event;
             })
-            .catch((err: any, caught) => {
-              console.log('cahtch', err);
-              return Observable.throw(err);
+            .catch((error: any) => {
+              if (error instanceof HttpErrorResponse) {
+                console.log('httperror', error);
+                switch (error.status) {
+                  case 304:
+                    console.log('304');
+                    return Observable.throw('304');
+                  case 401:
+                    console.log('401');
+                    return Observable.throw('401');
+                }
+              }
+              return Observable.throw(error);
             });
   }
 }

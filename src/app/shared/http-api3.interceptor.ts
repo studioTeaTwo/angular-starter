@@ -33,7 +33,7 @@ export class HttpApi3Interceptor implements HttpInterceptor {
               return event;
             })
             .catch((err: any, caught) => {
-              console.log('cahtch2', err);
+              console.log('cahtch3', err);
               return Observable.throw(err);
             });
   }
