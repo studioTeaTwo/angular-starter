@@ -1,0 +1,19 @@
+<section [style.background-color]="backgroundColor">
+
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{ (route.data | async)['title'] }}!!
+    </h1>
+  </div>
+
+  <label>{{ label }}</label>
+  <input type="text" matInput
+    [(ngModel)]="inputValue"
+    [ngModelOptions]="{updateOn: 'blur'}"
+    (keydown)="onKeyDown($event)"
+  >
+  <p>{{ inputValue }}</p>
+
+  <button (click)="onClickStart()">フィーバースタート</button>
+  <button (click)="onClickStop()">フィーバー停止</button>
+</section>

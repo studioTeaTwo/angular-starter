@@ -1,9 +1,9 @@
 export const PAGE_TITLE = {
   HOME: 'app',
+  DEMO: 'demo',
 };
 
-export type STATUS =
-  'open' | 'close';
+export type STATUS = 'open' | 'close';
 export namespace STATUS {
   export const OPEN: STATUS = 'open';
   export const CLOSE: STATUS = 'close';
