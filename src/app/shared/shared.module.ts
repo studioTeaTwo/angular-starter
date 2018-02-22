@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import 'app/shared/rxjs-operators';
 
 import { MaterialModule } from './material.module';
 
@@ -13,16 +12,10 @@ import { MaterialModule } from './material.module';
   ],
   declarations: [],
   exports: [
+    CommonModule,
     FormsModule,
     MaterialModule,
   ]
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [
-      ]
-    };
-  }
 }
