@@ -61,6 +61,6 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

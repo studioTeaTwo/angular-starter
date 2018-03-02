@@ -2,9 +2,8 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
 @NgModule({
-  imports: [
-  ],
-  declarations: []
+  imports: [],
+  declarations: [],
 })
 export class CoreModule {
   constructor(

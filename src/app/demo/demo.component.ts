@@ -10,24 +10,23 @@ const NO_COLOR = 'transparent';
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss']
+  styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnInit, OnDestroy {
   label: string;
   backgroundColor = NO_COLOR;
-  get randomColor(): string { return this.genColorCode(); }
+  get randomColor(): string {
+    return this.genColorCode();
+  }
 
   inputValue = '';
   message: string;
 
   private subscriptions: Subscription;
 
-  constructor(
-    public route: ActivatedRoute,
-  ) { }
+  constructor(public route: ActivatedRoute) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     if (this.subscriptions) {
@@ -43,7 +42,9 @@ export class DemoComponent implements OnInit, OnDestroy {
     if (this.subscriptions && !this.subscriptions.closed) {
       return;
     }
-    this.subscriptions = interval(1000).subscribe(value => this.backgroundColor = this.randomColor);
+    this.subscriptions = interval(1000).subscribe(
+      value => (this.backgroundColor = this.randomColor),
+    );
   }
 
   onClickStop() {
@@ -61,13 +62,12 @@ export class DemoComponent implements OnInit, OnDestroy {
   private genColorCode() {
     let val = '#';
     for (let i = 0; i < 6; i++) {
-       val += this.random();
+      val += this.random();
     }
     return val;
   }
 
   private random(): string {
-    return Math.floor((Math.random() * 16 + 0)).toString(16);
+    return Math.floor(Math.random() * 16 + 0).toString(16);
   }
-
 }

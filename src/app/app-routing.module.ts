@@ -6,17 +6,17 @@ import { PAGE_TITLE } from 'app/shared/constants';
 const routes: Routes = [
   {
     path: '',
-    children: []
+    children: [],
   },
   {
     path: 'demo',
     data: { title: PAGE_TITLE.DEMO },
-    loadChildren: './demo/demo.module#DemoModule'
+    loadChildren: './demo/demo.module#DemoModule',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
