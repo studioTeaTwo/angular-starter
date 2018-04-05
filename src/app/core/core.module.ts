@@ -4,6 +4,8 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 @NgModule({
   imports: [],
   declarations: [],
+  exports: [],
+  providers: [],
 })
 export class CoreModule {
   constructor(
