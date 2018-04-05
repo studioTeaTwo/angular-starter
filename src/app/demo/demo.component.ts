@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { interval } from 'rxjs/observable/interval';
+import { interval, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 
 import { PAGE_TITLE, STATUS, KEY_CODE } from '../shared/constants';
 
